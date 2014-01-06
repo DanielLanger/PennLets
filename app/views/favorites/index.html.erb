@@ -1,0 +1,30 @@
+<h1>Your Favorited Sublets</h1>
+
+
+
+<table id="listingTable" class="table table-bordered table-hover">
+	  <tr>
+		<th></th>
+		<th>Address</th>
+		<th>Price</th>
+		<th>Term</th>
+		<th>Description</th>
+	  </tr>
+	
+	<% @favorites.each do |favorite| %>
+	  <tr onmouseover="this.style.cursor='pointer';"
+	  onclick="window.location.href = '<%= url_for(:controller => 'listings', :action => 'show', :id=>favorite.listing_id) %>' " >
+		<td><%= image_tag Listing.find(favorite.listing_id).photo.url(:small) %></td>
+		<td><%= Listing.find(favorite.listing_id).address %></td>
+		<td>$<%= number_with_precision(Listing.find(favorite.listing_id).price, :precision => 2) %></td>
+		<td width="15%"><% Listing.find(favorite.listing_id).term.each do |l| %>
+				<%= l %>  <br> 
+			<% end %>
+		</td>
+		<td width="20%"><%= truncate(Listing.find(favorite.listing_id).description, :length =>80) %></td>
+	  </tr>
+	<% end %>
+</table>
+
+<br />
+

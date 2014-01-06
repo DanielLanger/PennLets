@@ -1,0 +1,14 @@
+<div style="padding:5px">
+<%= link_to 'New Listing', new_listing_path,{:style=>'', :class => "btn"} %>
+<h3>Available Sublets: <%= @filter.listings(params[:toFilter]).size %></h3>
+
+<table id="listingTable" class="table table-bordered table-hover">
+  <tr>
+    <th><%= link_to 'Filter', new_filter_path,{:style=>'', :class => "btn"} %><%= link_to 'Clear Filter', listings_path, {:style=>'', :class => "btn"} %></th>
+    <th>Address</th>
+    <th><u>Price Per Month</u></th>
+    <th> Term </th>
+    <th>Description</th>
+  </tr>
+  <%= render(@filter.listings(params[:toFilter])) ||  "<p> Sorry, No Sublets Fit Your Criteria! </p>".html_safe %>
+</table>

@@ -1,0 +1,29 @@
+<div style="padding:5px">
+	<%= link_to 'New Listing', new_listing_path,{:style=>'', :class => "btn"} %>
+	<h3>Available Sublets</h3>
+
+	<table id="listingTable" class="table table-bordered table-hover">
+	  <tr>
+		<th><%= link_to 'Filter By Your Needs', new_filter_path,{:style=>'', :class => "btn"} %></th>
+		<th>Address</th>
+		<th><u><%= sortable 'price', "Price Per Month" %></u></th>
+		<th> Term </th>
+		<th>Description</th>
+	  </tr>
+	
+	<% @listings.each do |listing| %>
+	  <tr onmouseover="this.style.cursor='pointer';"
+	  onclick="window.location.href = '<%= url_for(:controller => 'listings', :action => 'show', :id=>listing.id) %>' " >
+		<td><%= image_tag listing.photo.url(:small) %></td>
+		<td><%= listing.address %></td>
+		<td>$<%= number_with_precision(listing.price, :precision => 2) %></td>
+		<td width="15%"><% listing.term.each do |l| %>
+				<%= l %>  <br> 
+			<% end %>
+		</td>
+		<td width="20%"><%= truncate(listing.description, :length =>80) %></td>
+	  </tr>
+	<% end %>
+	</table>
+	<%= will_paginate @listings %>
+</div>

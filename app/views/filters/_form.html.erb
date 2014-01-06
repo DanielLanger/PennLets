@@ -1,0 +1,144 @@
+<head>
+<script type="text/javascript">
+ function togglePrice(){
+ 	if(document.getElementById("price").style.display=="none")
+ 		document.getElementById("price").style.display="block";
+ 	else
+ 		document.getElementById("price").style.display="none";
+ }
+ function toggleTotal(){
+ 	if(document.getElementById("total").style.display=="none")
+ 		document.getElementById("total").style.display="block";
+ 	else
+ 		document.getElementById("total").style.display="none";
+ }
+ function toggleAvailable(){
+ 	if(document.getElementById("available").style.display=="none")
+ 		document.getElementById("available").style.display="block";
+ 	else
+ 		document.getElementById("available").style.display="none";
+ }
+ function toggleBathrooms(){
+ 	if(document.getElementById("bathrooms").style.display=="none")
+ 		document.getElementById("bathrooms").style.display="block";
+ 	else
+ 		document.getElementById("bathrooms").style.display="none";
+ }
+ function toggleFurnished(){
+ 	if(document.getElementById("furnished").style.display=="none")
+ 		document.getElementById("furnished").style.display="block";
+ 	else
+ 		document.getElementById("furnished").style.display="none";
+ }
+ function toggleTerms(){
+ 	if(document.getElementById("terms").style.display=="none")
+ 		document.getElementById("terms").style.display="block";
+ 	else
+ 		document.getElementById("terms").style.display="none";
+ }
+ function toggleNegotiable(){
+ 	if(document.getElementById("negotiable").style.display=="none")
+ 		document.getElementById("negotiable").style.display="block";
+ 	else
+ 		document.getElementById("negotiable").style.display="none";
+ }
+ function toggleUtilities(){
+ 	if(document.getElementById("utilities").style.display=="none")
+ 		document.getElementById("utilities").style.display="block";
+ 	else
+ 		document.getElementById("utilities").style.display="none";
+ }
+ function toggleAC(){
+ 	if(document.getElementById("ac").style.display=="none")
+ 		document.getElementById("ac").style.display="block";
+ 	else
+ 		document.getElementById("ac").style.display="none";
+ }
+ function toggleParking(){
+ 	if(document.getElementById("parking").style.display=="none")
+ 		document.getElementById("parking").style.display="block";
+ 	else
+ 		document.getElementById("parking").style.display="none";
+ }
+ function toggleWD(){
+ 	if(document.getElementById("wd").style.display=="none")
+ 		document.getElementById("wd").style.display="block";
+ 	else
+ 		document.getElementById("wd").style.display="none";
+ }
+ function togglePrivate(){
+ 	if(document.getElementById("private").style.display=="none")
+ 		document.getElementById("private").style.display="block";
+ 	else
+ 		document.getElementById("private").style.display="none";
+ }
+</script>
+</head>
+<%= simple_form_for(@filter, :html =>{ :multipart => true, :class => 'form-horizontal', :style=>"width:800px"}) do |f| %>
+  <%= f.error_notification %>
+	<b>Check off the attributes you would like to filter by</b><br />
+  <div class="form-inputs">
+	<%= check_box 'object', 'price', {:onchange=>"togglePrice()"}, 'true', 'false' %> Maximum Price
+	<p id="price" style="display:none">
+	<%= f.label :maximum_price %>  
+    <%= f.number_field :maximum_price, :placeholder => 'Per Month',:min => 0 %>
+    </p><br />
+    <%= check_box 'object', 'rooms', {:onchange=>"toggleTotal()"}, 'true', 'false' %> Total Rooms
+    <p id="total" style="display:none">
+    <%= f.label :total_rooms %> 
+    <%= f.number_field :total_rooms, :min => 0 %>
+    </p><br />
+    <%= check_box 'object', 'available', {:onchange=>"toggleAvailable()"}, 'true', 'false' %> Available Rooms
+    <p id="available" style="display:none">
+    <%= f.label :available_rooms %> 
+    <%= f.number_field :available_rooms, :min => 0 %>
+    </p><br />
+    <%= check_box 'object', 'bathrooms', {:onchange=>"toggleBathrooms()"}, 'true', 'false' %> Number of Bathrooms
+    <p id="bathrooms" style="display:none">
+    <%= f.label :bathrooms %> 
+    <%= f.number_field :bathrooms, :min => 0 %>
+    </p><br />
+    <%= check_box 'object', 'furnished', {:onchange=>"toggleFurnished()"}, 'true', 'false' %> Furnished? <br />
+    <div id="furnished" style="display:none">
+    	<%= f.input :furnished %>
+    </div>
+    <%= check_box 'object', 'term', {:onchange=>"toggleTerms()"}, 'true', 'false' %> Terms<br />
+    <div id="terms" style="display:none">
+
+		<div style="float:right;margin-right:291px">
+			Term
+			<%= f.check_box(:term, {:multiple=> true}, "Summer 1", nil) %> Summer Session 1 <%= f.check_box(:term, {:multiple=> true}, "Summer 2", nil) %> Summer Session 2 
+			<%= f.check_box(:term, {:multiple=> true}, "Spring", nil) %> Spring <%= f.check_box(:term, {:multiple=> true}, "Fall", nil) %> Fall
+  		</div>
+  	<br />
+    <br />
+  	</div>
+    <%= check_box 'object', 'negotiable', {:onchange=>"toggleNegotiable()"}, 'true', 'false' %> Negotiable?<br />
+    <div id="negotiable" style="display:none">
+    	<%= f.input :negotiable %>
+    </div>
+    <%= check_box 'object', 'utilities', {:onchange=>"toggleUtilities()"}, 'true', 'false' %> Utilities?<br />
+    <div id="utilities" style="display:none">
+    	<%= f.input :utilities %>
+    </div>
+    <%= check_box 'object', 'air_conditioning', {:onchange=>"toggleAC()"}, 'true', 'false' %> Air Conditioning?<br />
+    <div id="ac" style="display:none">
+   		<%= f.input :air_conditioning %>
+   	</div>
+    <%= check_box 'object', 'parking', {:onchange=>"toggleParking()"}, 'true', 'false' %> Parking?<br />
+    <div id="parking" style="display:none">
+   		<%= f.input :parking %>
+   	</div>
+    <%= check_box 'object', 'washer_dryer', {:onchange=>"toggleWD()"}, 'true', 'false' %> Washer/Dryer?<br />
+    <div id="wd" style="display:none">
+    	<%= f.input :washer_dryer %>
+    </div>
+    <%= check_box 'object', 'private', {:onchange=>"togglePrivate()"}, 'true', 'false' %> Private Bathroom?<br />
+    <div id="private" style="display:none">
+    	<%= f.input :private_bathroom %>
+    </div>
+  </div><br />
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

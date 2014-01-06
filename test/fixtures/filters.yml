@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  price: 1.5
+  total_rooms: 1
+  bathrooms: 1
+  furnished: false
+  term: MyString
+  negotiable: false
+  utilities: false
+  air_conditioning: false
+  parking: false
+  washer_dryer: false
+  private_bathroom: false
+  available_rooms: 1
+  new: MyString
+  show: MyString
+
+two:
+  price: 1.5
+  total_rooms: 1
+  bathrooms: 1
+  furnished: false
+  term: MyString
+  negotiable: false
+  utilities: false
+  air_conditioning: false
+  parking: false
+  washer_dryer: false
+  private_bathroom: false
+  available_rooms: 1
+  new: MyString
+  show: MyString

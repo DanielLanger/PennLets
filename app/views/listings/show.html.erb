@@ -1,0 +1,91 @@
+<div class="hero-unit" style="height:396px">
+
+	<%= link_to 'Back', listings_path, {:style=>'', :class => "btn"} %>
+	<% if Favorite.find_by_listing_id_and_user_id(@listing.id, current_user.id) == nil %>
+		<%= link_to 'Favorite', {:controller => 'favorites', :action => 'newFav', :favorite => { :user_id => current_user.id, :listing_id => @listing.id} }, :style=>'', :class => "btn" %>
+	<% else %>
+		<button class="btn" disabled> Already Favorited </button>
+	<% end %>
+	<div class="row">
+		<p id="notice"><%= notice %></p>
+		<div class="span4">
+		<h3>
+	 		<%= @listing.address %>
+		</h3>
+			<%= image_tag @listing.photo.url(:medium) %>
+			<p>
+			  <b>Description:</b>
+			  <%= @listing.description %>
+			</p>
+		</div>
+		<div class="span3offset5" style="margin-left:5em;">
+		<h5>
+		  <b>Price Per Month:</b>
+		  $<%= number_with_precision(@listing.price, :precision => 2)  %>
+		</h5>
+		
+		<p>
+		  <b>Negotiable:</b>
+		  <%= @listing.negotiable ? 'yes' : 'no' %>
+		</p>
+		
+		<p>
+		  <b>Utilities:</b>
+		  <%= @listing.utilities ? 'yes' : 'no' %>
+		</p>
+		
+		<p>
+		  <b>Total Rooms:</b>
+		  <%= @listing.total_rooms %>
+		</p>
+		
+		<p>
+		  <b>Available Rooms:</b>
+		  <%= @listing.available_rooms %>
+		</p>
+		
+		<p>
+		  <b>Bathrooms:</b>
+		  <%= @listing.bathrooms %>
+		</p>
+		
+		<p>
+		  <b>Private Bathroom:</b>
+		  <%= @listing.private_bathroom ? 'yes' : 'no'%>
+		</p>
+		
+		<p>
+		  <b>Furnished:</b>
+		  <%= @listing.furnished ? 'yes' : 'no' %>
+		</p>
+		<p>
+		  <b>Air Conditioning:</b>
+		  <%= @listing.air_conditioning ? 'yes' : 'no' %>
+		</p>
+		<p>
+		  <b>Parking:</b>
+		  <%= @listing.parking ? 'yes' : 'no' %>
+		</p>
+		<p>
+		  <b>Washer/Dryer:</b>
+		  <%= @listing.washer_dryer ? 'yes' : 'no' %>
+		</p> 
+		<p>
+		  <b>Terms:</b>
+		  <%= @listing.term.join(", ") %>
+		</p>
+		
+		<p>
+			<b>Owner:</b>
+			<%= User.find(@listing.user_id).firstName %> <%= User.find(@listing.user_id).lastName %>(<%= User.find(@listing.user_id).email %>)
+		</p>
+		<p>
+	<a href="mailto:<%= User.find(@listing.user_id).email %>?Subject=Sublet:%20<%= @listing.address %>" class="btn" target="_blank">Send email</a>
+		<% if @listing.user_id==current_user.id %>
+			<p style="float:right"><%= link_to 'Edit', edit_listing_path(@listing) %>
+			<%= link_to 'Delete', @listing, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+		<% end %>
+		</div>
+		
+	</div>
+</div>

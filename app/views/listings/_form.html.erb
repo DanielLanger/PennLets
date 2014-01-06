@@ -1,0 +1,106 @@
+<%= simple_form_for(@listing, :html =>{ :multipart => true, :class => 'form-horizontal'}) do |f| %>
+  <% if @listing.errors.any? %>
+	<div id="error_explanation">
+	  <h2><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+	  <ul>
+	  <% @listing.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+	  <% end %>
+	  </ul>
+	</div>
+  <% end %>
+  <div class="row">  
+	  <div class="span6">
+		  <p>
+			<%= f.label :photo %> 
+			<%= f.file_field :photo %><br />
+		  </p>
+		  </br>
+		  <p>
+			<%= f.label :address %> 
+			<%= f.text_field :address %>
+		  </p>
+		  </br>
+		  <p>
+			<%= f.label :price %> 
+			<%= f.number_field :price, :placeholder => 'Per Month', :min =>0 %>
+		  </p>
+		  </br>
+		  <p>
+			<%= f.label :negotiable %> 
+			<%= f.check_box :negotiable %>
+		  </p>
+		  </br>
+		  <% if false %>
+		  <p>
+			<%= f.label :featured %> 
+			<%= f.check_box :featured %>
+		  </p>
+		  </br>
+		  <% end %>
+		  <p>
+			<%= f.label :total_rooms %> 
+			<%= f.number_field :total_rooms, :min => 0 %>
+		  </p>
+		  </br>
+		  <p>
+			<%= f.label :available_rooms %> 
+			<%= f.number_field :available_rooms, :min => 0 %>
+		  </p>
+		  </br>
+		  
+		  <p>
+			<%= f.label :bathrooms %> 
+			<%= f.number_field :bathrooms, :min => 0 %>
+		  </p>
+		  </br>
+		  <p>
+			<%= f.label :private_bathroom %> 
+			<%= f.check_box :private_bathroom %>
+		  </p>
+		  </br>
+		  <p>
+			<%= f.label :furnished %> 
+			<%= f.check_box :furnished %>
+		  </p>
+		  </br>
+		  <p>
+			<%= f.label :air_conditioning %> 
+			<%= f.check_box :air_conditioning %>
+		  </p>
+		  </br>
+		  <p>
+			<%= f.label :parking %> 
+			<%= f.check_box :parking %>
+		  </p>
+		  </br>
+		  <p>
+			<%= f.label :washer_dryer %> 
+			<%= f.check_box :washer_dryer %>
+		  </p>
+		  </br>
+		  <p>
+			<%= f.label :utilities %> 
+			<%= f.check_box :utilities %>
+		  </p>
+		  </br>
+		  <p>
+			<%= f.label :term %> 
+			<%= f.check_box(:term, {:multiple=> true}, "Summer 1", nil) %> Summer Session 1 <%= f.check_box(:term, {:multiple=> true}, "Summer 2", nil) %> Summer Session 2 <br />
+			<%= f.check_box(:term, {:multiple=> true}, "Spring", nil) %> Spring <%= f.check_box(:term, {:multiple=> true}, "Fall", nil) %> Fall
+		  </p>
+		  </br>
+	  </div>
+	  <div class="span4">
+		  <p>
+			<%= f.label :description %> 
+			<%= f.text_area :description %>
+		  </p>
+		  </br>
+		  <div class="actions">
+			<%= f.submit %>
+		  </div>
+	  </div>
+  </div>
+<% end %>

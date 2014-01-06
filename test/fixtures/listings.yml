@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  address: MyString
+  price: 1.5
+  featured: false
+  rooms: 1
+  batrooms: 1
+  furnished: false
+
+two:
+  address: MyString
+  price: 1.5
+  featured: false
+  rooms: 1
+  batrooms: 1
+  furnished: false

@@ -1,0 +1,23 @@
+<h1>Suggestions for the Site!</h1>
+
+<table class="table"> 
+  <tr>
+    <th>Suggestion</th>
+    <th>Rating</th>
+    <th>User</th>
+    <th></th>
+  </tr>
+
+<% @suggestions.each do |suggestion| %>
+  <tr>
+    <td><%= suggestion.suggestion %></td>
+    <td><%= suggestion.rating %></td>
+    <td><%= User.find(suggestion.user_id).firstName %> <%= User.find(suggestion.user_id).lastName %></td>
+    <td><%= button_to "UpVote", :controller => :suggestions, :action => :vote, :id => suggestion.id, :onclick => "this.disabled = true" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= button_to 'New Suggestion', new_suggestion_path, :method => "get"  %>

@@ -1,0 +1,11 @@
+<tr onmouseover="this.style.cursor='pointer';"
+  onclick="window.location.href = '<%= url_for(listing) %>' " >
+  <td><%= image_tag listing.photo.url(:small) %></td>
+  <td><%= listing.address %></td>
+  <td>$<%= number_with_precision(listing.price, :precision => 2)  %></td>
+  <td width="15%"><% listing.term.each do |l| %>
+		<%= l %>  <br> 
+		<% end %>
+  </td>
+  <td width="20%"><%= listing.description %></td>
+</tr>

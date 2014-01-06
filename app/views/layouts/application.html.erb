@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="shortcut icon" href="/DPLogofavicon.ico/">
+  <title>Sublets At Penn</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <script type='text/javascript'>
+	var googletag = googletag || {};
+	googletag.cmd = googletag.cmd || [];
+	(function() {
+	var gads = document.createElement('script');
+	gads.async = true;
+	gads.type = 'text/javascript';
+	var useSSL = 'https:' == document.location.protocol;
+	gads.src = (useSSL ? 'https:' : 'http:') + 
+	'//www.googletagservices.com/tag/js/gpt.js';
+	var node = document.getElementsByTagName('script')[0];
+	node.parentNode.insertBefore(gads, node);
+	})();
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-39279719-1']);
+  _gaq.push(['_setDomainName', 'subletsatpenn.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type='text/javascript'>
+	googletag.cmd.push(function() {
+	googletag.defineSlot('/12234093/Sublet-Bottom-Rectangle', [300, 250], 'div-gpt-ad-1362494170994-0').addService(googletag.pubads());
+	googletag.defineSlot('/12234093/Sublet-Leaderboard', [728, 90], 'div-gpt-ad-1362494170994-1').addService(googletag.pubads());
+	googletag.defineSlot('/12234093/Sublet-Top-Rectangle', [300, 250], 'div-gpt-ad-1362494170994-2').addService(googletag.pubads());
+	googletag.pubads().enableSingleRequest();
+	googletag.enableServices();
+	});
+</script>
+
+</head>
+<body>
+	<div class="navbar">
+	  <div class="navbar-inner">
+		<a class="brand" href="/">Home</a>
+		<ul class="nav pull-right">
+		  <li><a href="/listings">Listings</a></li>
+		  <li><a href="/favorites">Favorites</a></li>
+		  <li><a href="/about">About</a></li>
+		  <li><a href="/terms">Terms of Service</a></li>
+		  <% if user_signed_in? %>
+		  	<li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+		  <% end %>
+		</ul>
+	  </div>
+	</div>
+	<% if flash[:alert] %>
+		<div class="alert"><%= flash[:alert] %></div>
+	  <% end %>
+	<% if flash[:notice] %>
+		<div class="notice"><%= flash[:notice] %></div>
+	  <% end %>
+	<div style="margin-left:3em;margin-right:3em;">
+		<div style="float:left;padding:1em">
+			<div id='div-gpt-ad-1362494170994-1' style="height:75px;width:728px;text-align:center;margin-left:70px">
+				<h4>Sponsored By </h4><script type='text/javascript'> 
+					googletag.cmd.push(function() { googletag.display('div-gpt-ad-1362494170994-1'); });
+				</script>
+			</div><br /><br /><br />
+		</div>
+		<div style="margin-right:295px;float:left;background-color:#eeeeee;padding:1em">
+			<%= yield %>
+		</div>
+		<br />
+		<div style="position:fixed;right:1em;z-index:-1">
+			<div id='div-gpt-ad-1362494170994-2'  style="width:300px;height:250px;padding-bottom:5px;border-style:solid;border-width:2px">
+				<script type='text/javascript'> 
+					googletag.cmd.push(function() { googletag.display('div-gpt-ad-1362494170994-2'); });
+				</script>
+			</div><br /><br /><br />
+			<div id='div-gpt-ad-1362494170994-0' style="width:300px;height:250px;clear:right;border-style:solid;border-width:2px">
+				<script type='text/javascript'>
+					googletag.cmd.push(function() { googletag.display('div-gpt-ad-1362494170994-0'); });
+				</script>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
